@@ -1,0 +1,18 @@
+{
+  "generator-plugin-wp": {
+    "name": "Query All The Post Types",
+    "homepage": "https://wordpress.org/plugins/query-all-the-post-types/",
+    "description": "Returns a list of all the post types on your current install of WordPress.",
+    "version": "2.0.0",
+    "author": "Russell Aaron",
+    "authoremail": "contact@webdevstudios.com",
+    "authorurl": "http://russellenvy.com",
+    "license": "GPLv2",
+    "slug": "query-all-the-post-types",
+    "classname": "QATPT",
+    "classprefix": "QATPT_",
+    "prefix": "query_all_the_post_types",
+    "year": 2017,
+    "currentVersionWP": "4.7.1"
+  }
+}

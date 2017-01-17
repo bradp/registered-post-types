@@ -1,0 +1,18 @@
+{
+  "name": "query-all-the-post-types",
+  "description": "Returns a list of all the post types on your current install of WordPress.",
+  "license": "GPLv2",
+  "authors": [
+    "Russell Aaron"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
