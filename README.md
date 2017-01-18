@@ -15,7 +15,7 @@ Shows a list of all the post types on your current install of WordPress. Russell
 
 ### Manual Installation ###
 
-1. Upload the entire `/query-all-the-post-types` directory to the `/wp-content/plugins/` directory.
+1. Upload the entire `/registered-post-types` directory to the `/wp-content/plugins/` directory.
 2. Activate Query All The Post Types through the 'Plugins' menu in WordPress.
 
 ## Frequently Asked Questions ##
