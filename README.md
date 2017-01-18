@@ -9,7 +9,7 @@
 
 ## Description ##
 
-Shows a list of all the post types on your current install of WordPress. Russell has a [https://wordpress.org/plugins/query-all-the-post-types/](similar plugin), and once I started fixing some things in it, I decided my vision for the plugin might not merged cleanly in, so I figued I'd make a fork.
+Shows a list of all the post types on your current install of WordPress. Russell has a [similar plugin)[https://wordpress.org/plugins/query-all-the-post-types/], and once I started fixing some things in it, I decided my vision for the plugin might not merged cleanly in, so I figued I'd make a fork.
 
 ## Installation ##
 
