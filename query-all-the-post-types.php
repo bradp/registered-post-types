@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Query All The Post Types
  * Plugin URI:  https://wordpress.org/plugins/query-all-the-post-types/
- * Description: Returns a list of all the post types on your current install of WordPress.
+ * Description: Shows a list of all the registered post types on your current install of WordPress.
  * Version:     2.0.0
  * Author:      Russell Aaron
  * Author URI:  http://russellenvy.com
@@ -117,6 +117,14 @@ final class QATPT {
 	protected $main;
 
 	/**
+	 * Instance of QATPT_Display
+	 *
+	 * @since2.0.0
+	 * @var QATPT_Display
+	 */
+	protected $display;
+
+	/**
 	 * Creates or returns an instance of this class.
 	 *
 	 * @since  2.0.0
@@ -149,19 +157,9 @@ final class QATPT {
 	 */
 	public function plugin_classes() {
 		// Attach other plugin classes to the base plugin class.
-		$this->main = new QATPT_Main( $this );
+		$this->main    = new QATPT_Main( $this );
+		$this->display = new QATPT_Display( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
-
-	/**
-	 * Define plugin-related defines.
-	 *
-	 * @author Brad Parbs
-	 * @since   2.0.0
-	 * @return  void
-	 */
-	public function plugin_defines() {
-		define( 'QATPT_VERSION', '2.0.0' );
-	}
 
 	/**
 	 * Add hooks and filters
@@ -184,9 +182,6 @@ final class QATPT {
 		// Load translated strings for plugin.
 		load_plugin_textdomain( 'query-all-the-post-types', false, dirname( $this->basename ) . '/languages/' );
 
-		// Initialize plugin defines / constants.
-		$this->plugin_defines();
-
 		// Initialize plugin classes.
 		$this->plugin_classes();
 	}
@@ -207,6 +202,7 @@ final class QATPT {
 			case 'url':
 			case 'path':
 			case 'main':
+			case 'display':
 				return $this->$field;
 			default:
 				throw new Exception( 'Invalid ' . __CLASS__ . ' property: ' . $field );

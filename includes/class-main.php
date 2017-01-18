@@ -84,6 +84,7 @@ class QATPT_Main {
 	 */
 	public function settings_link( $links ) {
 
+		// Add our menu to the plugin action links.
 		$links[] = '<a href="' . add_query_arg( admin_url( 'tools.php' ), 'qatpt' ) . '">' . $this->menu_text . '</a>';
 		return $links;
 	}
@@ -99,25 +100,11 @@ class QATPT_Main {
 		add_submenu_page(
 			'tools.php',
 			$this->menu_text,
-			__( 'Query All CPTs', 'query-all-the-post-types' ),
+			__( 'Registered Post Types', 'query-all-the-post-types' ),
 			'manage_options',
 			$this->page_slug,
 			array( $this, 'init_admin_page' )
 		);
-	}
-
-	/**
-	 * Enqueue our scripts and styles.
-	 *
-	 * @author Brad Parbs
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	public function add_styles_scripts() {
-
-		// @TODO
-		wp_enqueue_style( $this->page_slug, $this->plugin->url( 'assets/css/main.css' ), array(), $this->plugin->version );
-		wp_enqueue_script( $this->page_slug, $this->plugin->url( 'assets/css/main.js' ), array( 'jquery-ui-accordion' ), $this->plugin->version );
 	}
 
 	/**
@@ -129,11 +116,25 @@ class QATPT_Main {
 	 */
 	public function init_admin_page() {
 
-		// Enqueue our scripts and styles.
-		$this->add_styles_scripts();
+		// Fire off our admin page after grabbing the post types.
+		$this->plugin->display->post_types= $this->get_all_data_for_display();
+		$this->plugin->display->admin_page();
+	}
+
+	/**
+	 * Grabs and formats all the post type data we need for display.
+	 *
+	 * @author Brad Parbs
+	 * @since   1.0.0
+	 * @return  array Array of all registered post type data.
+	 */
+	public function get_all_data_for_display() {
 
 		// Grab all our visible post type data.
 		$post_types = $this->get_all_visible_post_type_data();
+
+		// Set up our return var.
+		$display_data = array();
 
 		// Loop through each post type.
 		foreach ( $post_types as $key => $value ) {
@@ -144,57 +145,18 @@ class QATPT_Main {
 			}
 
 			// Set up our array.
-			$display_data = array(
+			$display_data[] = array(
 				'slug'           => $key,
-				'singlular_name' => isset( $value->labels->singular_name ) ? $value->labels->singular_name : '',
+				'singular_name'  => isset( $value->labels->singular_name ) ? $value->labels->singular_name : '',
 				'plural_name'    => isset( $value->labels->name ) ? $value->labels->name : '',
 				'menu_name'      => isset( $value->labels->menu_name ) ? $value->labels->menu_name : '',
 				'public'         => isset( $value->public ) ? $value->public : '',
 				'hierarchical'   => isset( $value->hierarchical ) ? $value->hierarchical : '',
 				'taxonomies'     => $this->get_taxonomies_for_post_type( $key ),
 			);
-
-			// Display our post type.
-			$this->display_single_post_type_markup( $display_data );
 		}
-	}
 
-	public function display_single_post_type_markup( $display ) {
-
-		// Set our defaults.
-		$display = wp_parse_args( $display, array(
-			'slug'           => '',
-			'singlular_name' => '',
-			'plural_name'    => '',
-			'menu_name'      => '',
-			'public'         => '',
-			'hierarchical'   => '',
-			'taxonomies'     => array(),
-		) );
-
-		echo '<h3>' . esc_attr( $display['slug'] ) . '</h3>';
-
-		echo '<div>';
-
-		echo '<p>';
-		echo esc_attr__( 'Post Type:', 'query-all-the-post-types' ) . esc_attr( $display['slug'] );
-		echo esc_attr__( 'Slug:', 'query-all-the-post-types' ) . esc_attr( $display['slug'] );
-		echo esc_attr__( 'Singular Name:', 'query-all-the-post-types' ) . esc_attr( $display['singlular_name'] );
-		echo esc_attr__( 'Plural Name:', 'query-all-the-post-types' ) . esc_attr( $display['plural_name'] );
-		echo esc_attr__( 'Menu Name:', 'query-all-the-post-types' ) . esc_attr( $display['menu_name'] );
-		echo esc_attr__( 'Public:', 'query-all-the-post-types' ) . esc_attr( $display['public'] );
-		echo esc_attr__( 'Hierarchical:', 'query-all-the-post-types' ) . esc_attr( $display['hierarchical'] );
-		echo '</p>';
-
-		echo '<a class="posttype" href="' . admin_url( 'edit.php?post_type=' . $display['slug'] ) . '">';
-		echo sprintf( esc_attr__( 'See all %s', 'query-all-the-post-types' ),  esc_attr( $display['plural_name'] ) );
-		echo '</a>';
-
-		echo '<hr />';
-
-		echo '<p>';
-		echo '<strong>' . esc_attr__( 'Taxonomies', 'query-all-the-post-types' ) . '</strong>';
-
+		return $display_data;
 	}
 
 	/**
@@ -220,7 +182,7 @@ class QATPT_Main {
 		foreach ( $taxonomies as $key => $value ) {
 
 			// Tack in our data.
-			$return_taxes[ $key ] = isset( $value->name ) ? $value->name : '';
+			$return_taxes[ $key ] = ( isset( $value->labels ) && isset( $value->labels->name ) ) ? $value->labels->name : '';
 		}
 
 		// Send it back.
@@ -275,8 +237,7 @@ class QATPT_Main {
 		$show_ui = ( isset( $post_type->show_ui ) ? $post_type->show_ui : true );
 
 		// Dynamically create our filter based on our post type name.
-		// A example of using this would be:
-		// add_filter( 'qatpt_is_revision_hidden', '__return_false' );
+		// A example of using this would be: add_filter( 'qatpt_is_revision_hidden', '__return_false' );.
 		return apply_filters( "qatpt_is_{$slug}_hidden", $show_ui );
 	}
 
