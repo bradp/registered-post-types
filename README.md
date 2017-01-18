@@ -1,16 +1,15 @@
-# Query All The Post Types #
-**Contributors:**      Russell Aaron  
-**Donate link:**       https://wordpress.org/plugins/query-all-the-post-types/  
-**Tags:**  
-**Requires at least:** 4.4  
-**Tested up to:**      4.7.1 
-**Stable tag:**        2.0.0  
-**License:**           GPLv2  
-**License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
+# View All Registered Post Types
+**Contributors:**      Brad Parbs, Russell Aaron
+**Tags:**
+**Requires at least:** 4.4
+**Tested up to:**      4.7.1
+**Stable tag:**        2.0.0
+**License:**           GPLv2
+**License URI:**       http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description ##
 
-Returns a list of all the post types on your current install of WordPress.
+Shows a list of all the post types on your current install of WordPress. Russell has a [https://wordpress.org/plugins/query-all-the-post-types/](similar plugin), and once I started fixing some things in it, I decided my vision for the plugin might not merged cleanly in, so I figued I'd make a fork.
 
 ## Installation ##
 
@@ -27,10 +26,10 @@ Returns a list of all the post types on your current install of WordPress.
 
 ## Changelog ##
 
-### 2.0.0 ###
+### 1.0.0 ###
 * First release
 
 ## Upgrade Notice ##
 
-### 2.0.0 ###
+### 1.0.0 ###
 First Release

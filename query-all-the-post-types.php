@@ -1,24 +1,22 @@
 <?php
 /**
- * Plugin Name: Query All The Post Types
- * Plugin URI:  https://wordpress.org/plugins/query-all-the-post-types/
+ * Plugin Name: View All Registered Post Types
+ * Plugin URI:  https://github.com/bradp/registered-post-types
  * Description: Shows a list of all the registered post types on your current install of WordPress.
  * Version:     2.0.0
- * Author:      Russell Aaron
- * Author URI:  http://russellenvy.com
- * Donate link: https://wordpress.org/plugins/query-all-the-post-types/
+ * Author:      Brad Parbs, Russell Aaron
+ * Author URI:  https://github.com/bradp/registered-post-types
  * License:     GPLv2
- * Text Domain: query-all-the-post-types
+ * Text Domain: registered-post-types
  * Domain Path: /languages
  *
- * @link https://wordpress.org/plugins/query-all-the-post-types/
  *
  * @package Query All The Post Types
  * @version 2.0.0
  */
 
 /**
- * Copyright (c) 2017 Russell Aaron (email : contact@webdevstudios.com)
+ * Copyright (c) 2017 Brad Parbs (email : brad@bradparbs.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or, at
@@ -180,7 +178,7 @@ final class QATPT {
 	public function init() {
 
 		// Load translated strings for plugin.
-		load_plugin_textdomain( 'query-all-the-post-types', false, dirname( $this->basename ) . '/languages/' );
+		load_plugin_textdomain( 'registered-post-types', false, dirname( $this->basename ) . '/languages/' );
 
 		// Initialize plugin classes.
 		$this->plugin_classes();

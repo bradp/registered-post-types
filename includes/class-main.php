@@ -2,14 +2,14 @@
 /**
  * Query All The Post Types Main
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @package Query All The Post Types
  */
 
 /**
  * Query All The Post Types Main.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 class QATPT_Main {
 
@@ -17,7 +17,7 @@ class QATPT_Main {
 	 * Parent plugin class
 	 *
 	 * @var   Query_All_The_Post_Types
-	 * @since 2.0.0
+	 * @since 1.0.0
 	 */
 	protected $plugin = null;
 
@@ -25,7 +25,7 @@ class QATPT_Main {
 	 * Slug / id of our menu page.
 	 *
 	 * @var string
-	 * @since 2.0.0
+	 * @since 1.0.0
 	 */
 	public $page_slug = 'qatpt';
 
@@ -33,14 +33,14 @@ class QATPT_Main {
 	 * Localized menu text.
 	 *
 	 * @var string
-	 * @since 2.0.0
+	 * @since 1.0.0
 	 */
 	public $menu_text = '';
 
 	/**
 	 * Constructor
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @param  Query_All_The_Post_Types $plugin Main plugin object.
 	 * @return void
 	 */
@@ -50,7 +50,7 @@ class QATPT_Main {
 		$this->plugin = $plugin;
 
 		// Init localized menu text.
-		$this->menu_text = __( 'View All Post Types', 'query-all-the-post-types' );
+		$this->menu_text = __( 'View All Post Types', 'registered-post-types' );
 
 		// Init the hooks.
 		$this->hooks();
@@ -59,7 +59,7 @@ class QATPT_Main {
 	/**
 	 * Initiate our hooks
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function hooks() {
@@ -93,7 +93,7 @@ class QATPT_Main {
 	 * Init our options page.
 	 *
 	 * @author Brad Parbs
-	 * @since   2.0.0
+	 * @since   1.0.0
 	 */
 	public function add_options_page() {
 

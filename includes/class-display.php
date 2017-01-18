@@ -2,28 +2,28 @@
 /**
  * Query All The Post Types Display
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @package Query All The Post Types
  */
 
 /**
  * Query All The Post Types Display.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 class QATPT_Display {
 	/**
 	 * Parent plugin class
 	 *
 	 * @var   Query_All_The_Post_Types
-	 * @since 2.0.0
+	 * @since 1.0.0
 	 */
 	protected $plugin = null;
 
 	/**
 	 * Post types from main class.
 	 *
-	 * @since 2.0.0
+	 * @since 1.0.0
 	 * @var  array
 	 */
 	public $post_types = array();
@@ -31,7 +31,7 @@ class QATPT_Display {
 	/**
 	 * Constructor
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @param  Query_All_The_Post_Types $plugin Main plugin object.
 	 * @return void
 	 */
@@ -43,13 +43,13 @@ class QATPT_Display {
 	 * Admin page display method.
 	 *
 	 * @author Brad Parbs
-	 * @since   2.0.0
+	 * @since   1.0.0
 	 * @return  void
 	 */
 	public function admin_page() {
 		?>
 		<div class="wrap">
-			<h1><?php esc_attr_e( 'Registered Post Types', 'query-all-the-post-types' ) ?></h1>
+			<h1><?php esc_attr_e( 'Registered Post Types', 'registered-post-types' ) ?></h1>
 			<div id="poststuff">
 				<div id="post-body" class="metabox-holder columns-2">
 					<div id="post-body-content">
@@ -61,8 +61,8 @@ class QATPT_Display {
 						<div class="meta-box-sortables">
 							<div class="postbox">
 								<div class="inside">
-									<p><?php esc_attr_e( 'These are all of the post types, custom post types &amp; associated taxonomies currently registered on your WordPress install right now.', 'query-all-the-post-types' ); ?></p>
-									<p><em><?php esc_attr_e( 'Please note: Deactivating a theme or plugin may result in removing a post type or custom post type.', 'query-all-the-post-types' ); ?></em></p>
+									<p><?php esc_attr_e( 'These are all of the post types, custom post types &amp; associated taxonomies currently registered on your WordPress install right now.', 'registered-post-types' ); ?></p>
+									<p><em><?php esc_attr_e( 'Please note: Deactivating a theme or plugin may result in removing a post type or custom post type.', 'registered-post-types' ); ?></em></p>
 								</div>
 							</div>
 							<div class="postbox">
@@ -82,7 +82,7 @@ class QATPT_Display {
 	 * Displays linked up table of contents.
 	 *
 	 * @author Brad Parbs
-	 * @since   2.0.0
+	 * @since   1.0.0
 	 * @return  void
 	 */
 	public function display_linked_table_of_contents() {
@@ -127,7 +127,7 @@ class QATPT_Display {
 	 * Helper method to display all post types with markup.
 	 *
 	 * @author Brad Parbs
-	 * @since   2.0.0
+	 * @since   1.0.0
 	 * @return  void
 	 */
 	public function display_all_post_types() {
@@ -142,7 +142,7 @@ class QATPT_Display {
 	 * Displays a single registered post type.
 	 *
 	 * @author Brad Parbs
-	 * @since   2.0.0
+	 * @since   1.0.0
 	 * @param   array $display  Array of a single post types data.
 	 * @return  void
 	 */
@@ -169,36 +169,36 @@ class QATPT_Display {
 				</td>
 				<td style="vertical-align: middle;text-align: right;">
 					<?php $all_link = add_query_arg( array( 'post_type' => esc_attr( $display['slug'] ) ), admin_url( 'edit.php' ) ); ?>
-					<a class="button-secondary" href="<?php echo esc_url( $all_link ); ?>"><?php esc_attr_e( 'View All', 'query-all-the-post-types' ); ?></a>
+					<a class="button-secondary" href="<?php echo esc_url( $all_link ); ?>"><?php esc_attr_e( 'View All', 'registered-post-types' ); ?></a>
 					<?php $new_link = add_query_arg( array( 'post_type' => esc_attr( $display['slug'] ) ), admin_url( 'post-new.php' ) ); ?>
-					<a class="button-secondary" href="<?php echo esc_url( $new_link ); ?>"><?php esc_attr_e( 'Add New', 'query-all-the-post-types' ); ?></a>
+					<a class="button-secondary" href="<?php echo esc_url( $new_link ); ?>"><?php esc_attr_e( 'Add New', 'registered-post-types' ); ?></a>
 				</td>
 			</tr>
 			</thead>
 			<tbody>
 			<tr class="alternate">
-				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Singular Name', 'query-all-the-post-types' ); ?></label></td>
+				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Singular Name', 'registered-post-types' ); ?></label></td>
 				<td><code><?php echo esc_attr( $display['singular_name'] ); ?></code></td>
 			</tr>
 			<tr>
-				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Plural Name', 'query-all-the-post-types' ); ?></label></td>
+				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Plural Name', 'registered-post-types' ); ?></label></td>
 				<td><code><?php echo esc_attr( $display['plural_name'] ); ?></code></td>
 			</tr>
 			<tr class="alternate">
-				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Menu Name', 'query-all-the-post-types' ); ?></label></td>
+				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Menu Name', 'registered-post-types' ); ?></label></td>
 				<td><code><?php echo esc_attr( $display['menu_name'] ); ?></code></td>
 			</tr>
 			<tr>
-				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Public', 'query-all-the-post-types' ); ?></label></td>
+				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Public', 'registered-post-types' ); ?></label></td>
 				<td><code><?php echo esc_attr( $this->convert_bool_to_yes_no( $display['public'] ) ); ?></code></td>
 			</tr>
 			<tr class="alternate">
-				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Hierarchical', 'query-all-the-post-types' ); ?></label></td>
+				<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Hierarchical', 'registered-post-types' ); ?></label></td>
 				<td><code><?php echo esc_attr( $this->convert_bool_to_yes_no( $display['hierarchical'] ) ); ?></code></td>
 			</tr>
 			<?php if ( count( $display['taxonomies'] ) ) { ?>
 				<tr>
-					<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Associated Taxonomies', 'query-all-the-post-types' ); ?></label></td>
+					<td class="row-title"><label for="tablecell"><?php esc_attr_e( 'Associated Taxonomies', 'registered-post-types' ); ?></label></td>
 					<td><?php $this->display_taxomonies( $display['taxonomies'] ); ?></td>
 				</tr>
 			<?php } ?>
@@ -207,6 +207,14 @@ class QATPT_Display {
 		<?php
 	}
 
+	/**
+	 * Display our comma-seperated, linked up taxonomy list.
+	 *
+	 * @author Brad Parbs
+	 * @since   1.0.0
+	 * @param   array  $taxonomies taxonomy data.
+	 * @return  void
+	 */
 	public function display_taxomonies( $taxonomies ) {
 
 		// Set up return array.
@@ -230,7 +238,15 @@ class QATPT_Display {
 		echo wp_kses( implode( ', ', $tax_list ), array( 'a' => array( 'href' => array() ) ) );
 	}
 
+	/**
+	 * Converts our boolean value to a Yes/No.
+	 *
+	 * @author Brad Parbs
+	 * @since   1.0.0
+	 * @param   bool $value whats a ghost favorite type? Boo-leans!
+	 * @return  string       yes or no.
+	 */
 	public function convert_bool_to_yes_no( $value ) {
-		return $value ? __( 'Yes', 'query-all-the-post-types' ) : __( 'No', 'query-all-the-post-types' );
+		return $value ? __( 'Yes', 'registered-post-types' ) : __( 'No', 'registered-post-types' );
 	}
 }
