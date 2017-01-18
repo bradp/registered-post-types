@@ -50,7 +50,7 @@ class QATPT_Main {
 		$this->plugin = $plugin;
 
 		// Init localized menu text.
-		$this->menu_text = __( 'Query All CPTs', 'query-all-the-post-types' );
+		$this->menu_text = __( 'View All Post Types', 'query-all-the-post-types' );
 
 		// Init the hooks.
 		$this->hooks();
@@ -100,7 +100,7 @@ class QATPT_Main {
 		add_submenu_page(
 			'tools.php',
 			$this->menu_text,
-			__( 'Registered Post Types', 'query-all-the-post-types' ),
+			$this->menu_text,
 			'manage_options',
 			$this->page_slug,
 			array( $this, 'init_admin_page' )
