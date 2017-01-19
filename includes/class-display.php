@@ -227,7 +227,7 @@ class QATPT_Display {
 			if ( $key && $value ) {
 
 				// Generate our admin term link.
-				$link = add_query_arg( array( 'taxonomy' => esc_attr( $key ) ), admin_url( 'edit_tags.php' ) );
+				$link = add_query_arg( array( 'taxonomy' => esc_attr( $key ) ), admin_url( 'edit-tags.php' ) );
 
 				// Generate a list and add it to our return array.
 				$tax_list[] = '<a href="' . esc_url_raw( $link ) . '">' . esc_attr( $value ) . '</a>';
